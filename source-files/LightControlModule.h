@@ -1,0 +1,182 @@
+#pragma once
+#include "Trunk_API.h"
+#include "Brake_API.h"
+#include "Door_API.h"
+#include "Glovebox_API.h"
+#include "KeyHandling_API.h"
+#include "SteeringwheelStick_API.h"
+#include "Diagnostic_API.h"
+#include "Headunit_API.h"
+#include "TrunkLightsControler.h"
+#include "StopLightsControler.h"
+#include "LowBeamControler.h"
+#include "DoorControler.h"
+#include "GloveboxLightsControler.h"
+#include "CeilingLightsControler.h"
+#include "FloorLightsControler.h"
+#include "BlinkersControler.h"
+#include "DayLightsControler.h"
+#include "HighBeamControler.h"
+#include "FogLightsControler.h"
+#include "BackLightsControler.h"
+#include "NumberPlateLControler.h"
+#include "AmbientLightControler.h"
+
+class LightControlModule : 
+	public Trunk_API,
+	public Brake_API,
+	public Door_API,
+	public Glovebox_API,
+	public KeyHandling_API,
+	public SteeringwheelStick_API,
+	public Diagnostic_API,
+	public Headunit_API
+{
+public:
+	void TrunkOpen();
+	void TrunkClosed();
+	void BrakePressed();
+	void BrakeReleased();
+	void FrontLeftDoorOpened();
+	void FrontRightDoorOpened();
+	void BackLeftDoorOpened();
+	void BackRightDoorOpened();
+	void FrontLeftDoorClosed();
+	void FrontRightDoorClosed();
+	void BackLeftDoorClosed();
+	void BackRightDoorClosed();
+	void AllDoorsOpened();
+	void AllDoorsClosed();
+	void GloveboxOpened();
+	void GloveboxClosed();
+	void CarUnlocked();
+	void CarLocked();
+	void OpenTrunk();
+	void CloseTrunk();
+	void DayLightsOn();
+	void DayLightsOff();
+	void LowBeamOn();
+	void LowBeamOff();
+	void HighBeamOn();
+	void HighBeamOff();
+	void BlinkersLeftOn();
+	void BlinkersLeftOff();
+	void BlinkersRightOn();
+	void BlinkersRightOff();
+	void BlinkersLeftFiveBlinks();
+	void BlinkersRightFiveBlinks();
+	void FogLightsOn();
+	void FogLightsOff();
+	void LightsTestOn();
+	void LightsTestOff();
+	
+	void DisplayStatus_TrunkLight_left();
+	void DisplayStatus_TrunkLight_right();
+	void DisplayStatus_StopLight_left();
+	void DisplayStatus_StopLight_right();
+	void DisplayStatus_DoorLight_frontLeft();
+	void DisplayStatus_DoorLight_frontRight();
+	void DisplayStatus_DoorLight_backLeft();
+	void DisplayStatus_DoorLight_backRight();
+	void DisplayStatus_GloveboxLight_top();
+	void DisplayStatus_CeilingLight_front();
+	void DisplayStatus_CeilingLight_backLeft();
+	void DisplayStatus_CeilingLight_backRight();
+	void DisplayStatus_FloorLight_left();
+	void DisplayStatus_FloorLight_right();
+	void DisplayStatus_BlinkerLight_frontLeft();
+	void DisplayStatus_BlinkerLight_frontRight();
+	void DisplayStatus_BlinkerLight_sideLeft();
+	void DisplayStatus_BlinkerLight_sideRight();
+	void DisplayStatus_BlinkerLight_backLeft();
+	void DisplayStatus_BlinkerLight_backRight();
+	void DisplayStatus_LowBeamLight_left();
+	void DisplayStatus_LowBeamLight_right();
+	void DisplayStatus_DayLight_left();
+	void DisplayStatus_DayLight_right();
+	void DisplayStatus_HighBeamLight_left();
+	void DisplayStatus_HighBeamLight_right();
+	void DisplayStatus_FogLight_left();
+	void DisplayStatus_FogLight_right();
+	void DisplayStatus_BackLight_left();
+	void DisplayStatus_BackLight_right();
+	void DisplayStatus_NumberPlateLight_left();
+	void DisplayStatus_NumberPlateLight_right();
+	void DisplayStatus_All();
+
+	void Replace_TrunkLight_left();
+	void Replace_TrunkLight_right();
+	void Replace_StopLight_left();
+	void Replace_StopLight_right();
+	void Replace_DoorLight_frontLeft();
+	void Replace_DoorLight_frontRight();
+	void Replace_DoorLight_backLeft();
+	void Replace_DoorLight_backRight();
+	void Replace_GloveboxLight_top();
+	void Replace_CeilingLight_front();
+	void Replace_CeilingLight_backLeft();
+	void Replace_CeilingLight_backRight();
+	void Replace_FloorLight_left();
+	void Replace_FloorLight_right();
+	void Replace_BlinkerLight_frontLeft();
+	void Replace_BlinkerLight_frontRight();
+	void Replace_BlinkerLight_sideLeft();
+	void Replace_BlinkerLight_sideRight();
+	void Replace_BlinkerLight_backLeft();
+	void Replace_BlinkerLight_backRight();
+	void Replace_LowBeamLight_left();
+	void Replace_LowBeamLight_right();
+	void Replace_DayLight_left();
+	void Replace_DayLight_right();
+	void Replace_HighBeamLight_left();
+	void Replace_HighBeamLight_right();
+	void Replace_FogLight_left();
+	void Replace_FogLight_right();
+	void Replace_BackLight_left();
+	void Replace_BackLight_right();
+	void Replace_NumberPlateLight_left();
+	void Replace_NumberPlateLight_right();
+	void Replace_All();
+
+	void WarningLights_On();
+	void WarningLights_Off();
+	void SwitchAmbientLightColour();
+	void TurnUpAmbientBrightness();
+	void TurnDownAmbientBrightness();
+	void TurnOnAmbientLights();
+	void TurnOffAmbientLights();
+	void TurnUpCoupeLightsBrightness();
+	void TurnDownCoupeLightsBrightness();
+	void TurnUpGloveboxBrightness();
+	void TurnDownGloveboxBrightness();
+	void TurnOnCoupeLight_front();
+	void TurnOnCoupeLight_backLeft();
+	void TurnOnCoupeLight_backRight();
+	void TurnOffCoupeLight_front();
+	void TurnOffCoupeLight_backLeft();
+	void TurnOffCoupeLight_backRight();
+	void TurnOnTrunkLights();
+	void TurnOffTrunkLights();
+private:
+	void StopAllLights();
+private:
+	TrunkLightsControler TLC;
+	StopLightsControler SLC;
+	DoorControler DC;
+	GloveboxLightsControler GLC;
+	CeilingLightsControler CLC;
+	FloorLightsControler FLC;
+	BlinkersControler BC;
+	LowBeamControler LBC;
+	DayLightsControler DLC;
+	HighBeamControler HBC;
+	FogLightsControler FogLC;
+	BackLightsControler BLC;
+	NumberPlateLControler NPC;
+	AmbientLightControler ALC;
+
+	bool isFrontLDoorOpened = false;
+	bool isFrontRDoorOpened = false;
+	bool isBackLDoorOpened = false;
+	bool isBackRDoorOpened = false;
+};
