@@ -1,0 +1,118 @@
+Create a SW module (LightControlModule) which to handle the whole Lighting related functionalities in a Car.
+Create a ControlerECU simulator which to be able to test all the functionalities by keyboard commands.
+
+The LightControlModule module will be used by:
+
+ - TrunkECU
+ - DoorECU
+ - BrakeECU
+ - GloveboxECU
+ - HeadUnitECU
+ - KeyHandlingECU (the ECU that communicates with the car owner's key)
+ - SteeringWheel_StickECU (the stick located next to the steering wheel)
+ - DiagnosticECU (that ECU is used to inform the system for any updates of the car state)
+
+The LightControlModule shall provide the functionality to control all the car available lights to every ECU
+The LightControlModule has to be flexible enough to be able to support new ECUs in the future
+
+The Light modules that has to be controled are:
+ - FogLights
+ - DayLights
+ - LowBeam
+ - HighBeam
+ - BackLights
+ - Blinkers
+ - StopLights
+ - NumberPlateLights
+ - CeilingLights (the lights in the car coupe)
+ - TrunkLights
+ - GloveboxLights
+ - AmbientLights
+ - DoorLights
+ - FloorLights
+
+Functional APIs:
+
+TrunkECU
+ - TrunkOpen
+ - TrunkClosed
+ 
+DoorECU
+ - DoorOpened
+ - DoorClosed
+
+BrakeECU
+ - BrakePressed
+ - BrakeReleased
+
+GloveboxECU
+ - Glovebox_Opened
+ - Glovebox_Closeed
+
+KeyHandlingECU
+ - Car_Unlocked
+    -> Blink once all blinkers
+    -> Start the LowBeam
+ - Car_Locked
+    -> Blink once all blinkers
+    -> Stop all lights
+ - OpenTrunk
+    -> Start Trunk Lights 
+
+SteeringWheel_StickECU
+ - Daylights_OnOff
+ - LowBeam_OnOff
+ - HighBeam_OnOff
+ - Blinkers_Left_OnOff
+ - Blinkers_Left_5Blinks
+ - Blinkers_Right_OnOff
+ - Blinkers_Right_5Blinks
+
+DiagnosticECU
+ - LightsTest_On/Off
+    -> On/Off all the lights
+ - GetStatus
+    -> Report all info for particular light
+    -> Report all info for all lights
+ - LightUpdate (to add/replace bulb. Set/updated bulb life expectency (0%-100%)
+    -> For particular light
+    -> For all lights
+
+HeadUnitECU
+ - WarningLights_OnOff
+    -> Start/Stop all the blinkers
+ - SetAmbientLightsColor
+ - AdjustAmbientLightsBrightness
+ - AmbientLights_OnOff
+ - AdjustCoupeLightsBrightness (including the trunk lights)
+ - CoupeLights_OnOff
+    -> for particular Ceiling light or trunk light
+
+Main Lights Functionality:
+    |FogLights
+    |DayLights
+    |LowBeam
+    |HighBeam
+    |BackLights
+    |Blinkers
+    |StopLights
+    |NumberPlateLights
+    |DoorLights
+    |----> On/Off
+    |----> Light info control (Life in percents ++ hasBulb?)
+
+
+    |CeilingLights (the lights in the car coupe)
+    |TrunkLights
+    |GloveboxLights
+    |FloorLights
+    |----> On/Off
+    |----> BrightnessAdjust
+    |----> Light info control (Life in percents ++ hasBulb?)
+
+
+    |AmbientLights
+    |----> On/Off
+    |----> BrightnessAdjust
+    |----> Light info control (Life in percents ++ hasBulb?)
+    |----> Color Control
